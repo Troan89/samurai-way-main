@@ -1,0 +1,14 @@
+.nav {
+    grid-area: n;
+    background-color: bisque;
+}
+
+.item a{
+    color: darkgrey;
+    text-decoration: none;
+}
+
+.item a:active,
+.item a:focus {
+    color: green;
+}
