@@ -2,6 +2,7 @@ import styles from "./Users.module.css";
 import userImg from "../../assets/images/user.jpg";
 import React from "react";
 import {UsersType} from "../../state/State";
+import {NavLink} from "react-router-dom";
 
 type Users_T = {
     users: Array<UsersType>
@@ -28,8 +29,11 @@ export const Users = (props:Users_T) => {
         {props.users.map(user => <div key={user.id}>
             <span>
                 <div>
-                    <img src={user.photos.small != null ? user.photos.small : userImg}
-                         className={styles.usersPhoto}/>
+                    <NavLink to={`/profile/${user.id}`}>
+                      <img src={user.photos.small != null ? user.photos.small : userImg}
+                           className={styles.usersPhoto}/>
+                    </NavLink>
+
                 </div>
                 <div>
                     {user.followed

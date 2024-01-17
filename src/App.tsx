@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./Components/Header/Header";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {Navbar} from "./Components/Navbar/Navbar";
+import {HeaderContainer} from "./Components/Header/HeaderContainer";
 
 type AppPropsType = {
     // store: DataStateType
@@ -18,7 +18,7 @@ const App = (props: AppPropsType) => {
     }
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Outlet />

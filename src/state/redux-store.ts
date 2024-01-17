@@ -3,12 +3,14 @@ import {ProfileReducer} from "./ProfileReducer";
 import {DialogsReducer} from "./DialogsReducer";
 import {SidebarReducer} from "./SidebarReducer";
 import {UsersReducer} from "./UsersReducer";
+import {AuthReducer} from "./AuthReducer";
 
 let rootReducers = combineReducers({
     profilePage: ProfileReducer,
     dialogsPage: DialogsReducer,
     sidebar: SidebarReducer,
-    usersPage: UsersReducer
+    usersPage: UsersReducer,
+    auth: AuthReducer
 })
 
 // export let store = legacy_createStore(rootReducers)

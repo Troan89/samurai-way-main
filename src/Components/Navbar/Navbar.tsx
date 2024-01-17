@@ -6,7 +6,7 @@ import {S} from '../styles/_navbarSstyles'
 export const Navbar = () => {
     return (
         <nav className={s.nav}>
-            <S.NavWrapper><NavLink to={'/profile'}>Профиль</NavLink></S.NavWrapper>
+            <S.NavWrapper><NavLink to={'/profile/:id'}>Профиль</NavLink></S.NavWrapper>
             <S.NavWrapper><NavLink to={'/dialogs'}>Сообщения</NavLink></S.NavWrapper>
             <S.NavWrapper><NavLink to="/news">Новости</NavLink></S.NavWrapper>
             <S.NavWrapper><NavLink to="/music">Музыка</NavLink></S.NavWrapper>

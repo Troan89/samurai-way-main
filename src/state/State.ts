@@ -1,7 +1,8 @@
-import {addPostAC, ProfileReducer, updateNewPostTextAC} from "./ProfileReducer";
-import {addMessageAC, DialogsReducer, updateNewMessageTextAC} from "./DialogsReducer";
-import {SidebarReducer} from "./SidebarReducer";
-import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from "./UsersReducer";
+import {addPost, setUserProfile, updateNewPostText} from "./ProfileReducer";
+import {addMessageAC, updateNewMessageTextAC} from "./DialogsReducer";
+import {follow, setCurrentPage, setIsFetching, setTotalUsersCount, setUsers, unfollow} from "./UsersReducer";
+import {UserProfile_T} from "../Components/Profile/ProfileContainer";
+import {setAuthUserData} from "./AuthReducer";
 
 // export let store: StoreType = {
 //     _state: {
@@ -79,6 +80,7 @@ export type DialogsPageType = {
 export type ProfilePageType = {
     postsData: Array<PostsType>
     newPostText: string
+    profile: UserProfile_T | null
 }
 export type DialogsDataType = {
     id: string
@@ -91,15 +93,16 @@ export type MessagesDataType = {
 }
 export type UsersDataType = {
     users: Array<UsersType>
-    pageSize:number
+    pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 export type UsersType = {
     id: string
     photos: {
         small: string
-        large:string
+        large: string
     }
     followed: boolean
     name: string
@@ -116,19 +119,32 @@ export type PostsType = {
     like: number
 }
 
-export type ActionType = AddPostType | UpdateNewPostTextType |
-    AddMessageType | UpdateNewMessageTextType |
-    FollowType | UnfollowType | setUsersType | setCurrentPageType | setTotalUsersCountType
+export type ActionType =
+    AddPostType
+    | UpdateNewPostTextType
+    | AddMessageType
+    | UpdateNewMessageTextType
+    | FollowType
+    | UnfollowType
+    | setUsersType
+    | setCurrentPageType
+    | setTotalUsersCountType
+    | setIsFetchingType
+    | setUserProfileType
+    | setUserDataType
 
-export type AddPostType = ReturnType<typeof addPostAC>
+export type AddPostType = ReturnType<typeof addPost>
 export type AddMessageType = ReturnType<typeof addMessageAC>
-export type UpdateNewPostTextType = ReturnType<typeof updateNewPostTextAC>
+export type UpdateNewPostTextType = ReturnType<typeof updateNewPostText>
 export type UpdateNewMessageTextType = ReturnType<typeof updateNewMessageTextAC>
-export type FollowType = ReturnType<typeof followAC>
-export type UnfollowType = ReturnType<typeof unfollowAC>
-export type setUsersType = ReturnType<typeof setUsersAC>
-export type setTotalUsersCountType = ReturnType<typeof setTotalUsersCountAC>
-export type setCurrentPageType = ReturnType<typeof setCurrentPageAC>
+export type FollowType = ReturnType<typeof follow>
+export type UnfollowType = ReturnType<typeof unfollow>
+export type setUsersType = ReturnType<typeof setUsers>
+export type setTotalUsersCountType = ReturnType<typeof setTotalUsersCount>
+export type setCurrentPageType = ReturnType<typeof setCurrentPage>
+export type setIsFetchingType = ReturnType<typeof setIsFetching>
+export type setUserProfileType = ReturnType<typeof setUserProfile>
+export type setUserDataType = ReturnType<typeof setAuthUserData>
 
 
 
