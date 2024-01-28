@@ -7,6 +7,7 @@ import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {compose} from "redux";
 import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {setUserInfo} from "../../state/ProfileReducer";
 
 type UsersPropsType = {
     users: Array<UsersType>
@@ -20,6 +21,7 @@ type UsersPropsType = {
     getUsers:(currentPage: number, pageSize: number)=>void
     unfollowUser:(userId:string) => void
     followUser:(userId:string) => void
+    // setUserInfo:(userId: string) => void
 }
 
 export class UsersContainerAPI extends React.Component<UsersPropsType, any> {
@@ -44,6 +46,7 @@ export class UsersContainerAPI extends React.Component<UsersPropsType, any> {
                 followingInProgress={this.props.followingInProgress}
                 unfollowUser={this.props.unfollowUser}
                 followUser={this.props.followUser}
+                // setUserInfo={this.props.setUserInfo}
             />
         </>
     }
@@ -67,7 +70,8 @@ export const UsersContainer = compose<React.ComponentType>(
             setIsFollowingProgress,
             getUsers,
             unfollowUser,
-            followUser
+            followUser,
+            // setUserInfo
         }),
     WithAuthRedirect
 )(UsersContainerAPI)

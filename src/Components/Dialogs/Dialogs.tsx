@@ -4,6 +4,8 @@ import {Message} from "./Message/Message";
 import React, {ChangeEvent, useState} from "react";
 import {DialogsDataType, MessagesDataType} from "../../state/State";
 import {Navigate} from "react-router-dom";
+import {updateNewMessageText} from "../../state/DialogsReducer";
+import {useAppDispatch} from "../../state/redux-store";
 
 
 type DialogsPropsType = {
@@ -20,6 +22,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                                                                            id={dialog.id}/>)
     let messagesElements = props.messages.map((message, index) => <Message key={index} message={message.message}
                                                                            id={message.id}/>)
+const dispatch = useAppDispatch()
 
     const addMessage = () => {
         props.addMessage()
@@ -28,7 +31,7 @@ export const Dialogs = (props: DialogsPropsType) => {
 
     const onMessageTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setMessageText(e.currentTarget.value)
-        props.onMessageTextChange(messageText)
+        dispatch(updateNewMessageText(messageText))
     }
 
     return (

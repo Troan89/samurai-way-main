@@ -13,7 +13,7 @@ const App = (props: AppPropsType) => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    if (location.pathname === '/') {
+    if (location.pathname === '') {
         navigate('/profile')
     }
     return (

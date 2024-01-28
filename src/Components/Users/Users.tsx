@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 import {usersApi} from "../../api/users-api";
 import {useDispatch} from "react-redux";
 import {setIsFollowingProgress} from "../../state/UsersReducer";
+import {setUserInfo} from "../../state/ProfileReducer";
 
 type Users_T = {
     users: Array<UsersType>
@@ -16,6 +17,7 @@ type Users_T = {
     followingInProgress: string[]
     unfollowUser: (userId: string) => void
     followUser: (userId: string) => void
+    // setUserInfo:(userId: string) => void
 }
 
 export const Users = (props: Users_T) => {
@@ -36,7 +38,9 @@ export const Users = (props: Users_T) => {
                 <div>
                     <NavLink to={`/profile/${user.id}`}>
                       <img src={user.photos.small != null ? user.photos.small : userImg}
-                           className={styles.usersPhoto}/>
+                           className={styles.usersPhoto}
+                      // onClick={()=>props.setUserInfo(user.id)}
+                      />
                     </NavLink>
 
                 </div>

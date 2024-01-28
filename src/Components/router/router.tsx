@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 import {Error404} from "../Error/Error404";
 import React from "react";
 import App from "../../App";
@@ -13,7 +13,6 @@ export const router = createBrowserRouter([
         path: "/",
         element: <App/>,
         errorElement: <Error404/>,
-        // errorElement: <div>Error 404</div>,
         children: [
             {
                 path: "/profile/:id/*",
@@ -34,6 +33,14 @@ export const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />
+            },
+            {
+                path: "/404",
+                element: <Error404/>
+            },
+            {
+                path: "/*",
+                element: <Navigate to={'/404'}/>
             },
         ],
     },
