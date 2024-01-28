@@ -2,14 +2,16 @@ import React from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../state/redux-store";
-import {setUserProfile} from "../../state/ProfileReducer";
-import {ProfileApi} from "../../api/profile-api";
+import {setUserInfo} from "../../state/ProfileReducer";
 import {WithRouterHOC} from "../../hoc/withRouter";
+import {Navigate} from "react-router-dom";
+import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 export type ProfilePropsType = {
-    setUserProfile: (userProfile: UserProfile_T) => void
     profile: UserProfile_T | null
     id?: string
+    setUserInfo: (userId: string) => void
 }
 
 export type UserProfile_T = {
@@ -36,17 +38,18 @@ export type UserPhotos_T = {
 export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
-        // console.log(this.props.params)
-        this.props.id && ProfileApi.getUserInfo(this.props.id)
-            .then((res) => {
-                this.props.setUserProfile(res.data)
-            })
+        this.props.id && this.props.setUserInfo(this.props.id)
     }
 
     render() {
-        return <Profile profile={this.props.profile}/>
+        return <Profile profile={this.props.profile} />
     }
 }
+
+// let AuthRedirectComponent = (props:ProfilePropsType) => {
+//     if (!props.isAuth) return <Navigate to={'/login'}/>
+//     return <ProfileContainerAPI {...props} />
+// }
 
 let mapStateToProps = (state: AppRootStateType) => {
     return {
@@ -54,7 +57,16 @@ let mapStateToProps = (state: AppRootStateType) => {
     }
 }
 
-export const ProfileContainer = connect(mapStateToProps,
-    {
-        setUserProfile
-    })(WithRouterHOC(ProfileContainerAPI))
+export const ProfileContainer = compose<React.ComponentType>(
+    connect(mapStateToProps,
+        {
+            setUserInfo
+        }),
+    WithRouterHOC,
+    WithAuthRedirect
+)(ProfileContainerAPI)
+
+// export const ProfileContainer = WithAuthRedirect(connect(mapStateToProps,
+//     {
+//         setUserInfo
+//     })(WithRouterHOC(ProfileContainerAPI)))

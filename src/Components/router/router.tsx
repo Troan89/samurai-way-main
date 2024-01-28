@@ -5,6 +5,7 @@ import App from "../../App";
 import {DialogsContainer} from "../Dialogs/DialogsContainer";
 import {UsersContainer} from "../Users/UsersContainer";
 import {ProfileContainer} from "../Profile/ProfileContainer";
+import {Login} from "../Login/Login";
 
 
 export const router = createBrowserRouter([
@@ -32,7 +33,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <div>Login</div>
+                element: <Login />
             },
         ],
     },

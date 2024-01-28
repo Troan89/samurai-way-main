@@ -1,6 +1,14 @@
 import {addPost, setUserProfile, updateNewPostText} from "./ProfileReducer";
-import {addMessageAC, updateNewMessageTextAC} from "./DialogsReducer";
-import {follow, setCurrentPage, setIsFetching, setTotalUsersCount, setUsers, unfollow} from "./UsersReducer";
+import {addMessage, updateNewMessageText} from "./DialogsReducer";
+import {
+    follow,
+    setCurrentPage,
+    setIsFetching,
+    setIsFollowingProgress,
+    setTotalUsersCount,
+    setUsers,
+    unfollow
+} from "./UsersReducer";
 import {UserProfile_T} from "../Components/Profile/ProfileContainer";
 import {setAuthUserData} from "./AuthReducer";
 
@@ -97,6 +105,7 @@ export type UsersDataType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: string[]
 }
 export type UsersType = {
     id: string
@@ -132,11 +141,12 @@ export type ActionType =
     | setIsFetchingType
     | setUserProfileType
     | setUserDataType
+    | setIsFollowingProgressType
 
 export type AddPostType = ReturnType<typeof addPost>
-export type AddMessageType = ReturnType<typeof addMessageAC>
+export type AddMessageType = ReturnType<typeof addMessage>
 export type UpdateNewPostTextType = ReturnType<typeof updateNewPostText>
-export type UpdateNewMessageTextType = ReturnType<typeof updateNewMessageTextAC>
+export type UpdateNewMessageTextType = ReturnType<typeof updateNewMessageText>
 export type FollowType = ReturnType<typeof follow>
 export type UnfollowType = ReturnType<typeof unfollow>
 export type setUsersType = ReturnType<typeof setUsers>
@@ -145,6 +155,7 @@ export type setCurrentPageType = ReturnType<typeof setCurrentPage>
 export type setIsFetchingType = ReturnType<typeof setIsFetching>
 export type setUserProfileType = ReturnType<typeof setUserProfile>
 export type setUserDataType = ReturnType<typeof setAuthUserData>
+export type setIsFollowingProgressType = ReturnType<typeof setIsFollowingProgress>
 
 
 

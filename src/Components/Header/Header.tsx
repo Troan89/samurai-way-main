@@ -8,7 +8,6 @@ type Header_T = {
 }
 
 export const Header = ({isAuth, login}: Header_T) => {
-    debugger
     return (
         <header className={s.header}>
             <img

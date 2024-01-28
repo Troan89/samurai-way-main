@@ -2,11 +2,9 @@ import React from "react";
 import {ProfileInfo} from "./PropfileInfo/ProfileInfo";
 import {MyPostContainer} from "./Myposts/MyPostsContainer";
 import {UserProfile_T} from "./ProfileContainer";
+import {Navigate} from "react-router-dom";
 
 type ProfilePropsType = {
-    // postsData:PostsDataType[]
-    // dispatch:(action:ActionType)=>void
-    // newPostText:string
     profile: UserProfile_T | null
 }
 

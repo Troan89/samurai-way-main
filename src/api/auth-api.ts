@@ -1,8 +1,8 @@
-import axios from "axios";
+import {instance} from "./intanse";
 
 export const AuthApi = {
     getMeInfo() {
-        return axios.get<getMeInfo_T>(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
+        return instance.get<getMeInfo_T>(`auth/me`)
     }
 }
 

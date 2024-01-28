@@ -1,14 +1,17 @@
 import React from "react";
-import {ActionType} from "../../state/State";
-import {addMessageAC, updateNewMessageTextAC} from '../../state/DialogsReducer';
+import {ActionType, DialogsDataType, MessagesDataType} from "../../state/State";
+import {addMessage, updateNewMessageText} from '../../state/DialogsReducer';
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../state/redux-store";
 import {Dialogs} from "./Dialogs";
+import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 type DialogsPropsType = {
-    // dialogsData: DialogItemPropsType[]
-    // messagesData:MessagePropsType[]
-    // dispatch:(action:ActionType)=>void
+    dialogs: DialogsDataType[]
+    messages: MessagesDataType[]
+    updateNewMessageText: (text: string) => void
+    addMessage: () => void
 }
 
 // export const DialogsContainer = (props: DialogsPropsType) => {
@@ -38,15 +41,20 @@ type DialogsPropsType = {
 let mapStateToProps = (state: AppRootStateType) => {
     return {
         dialogs: state.dialogsPage.dialogsData,
-        messages: state.dialogsPage.messagesData
-    }
-}
-let mapDispatchToProps = (dispatch:(action:ActionType)=>void) => {
-    // let dispatch = useDispatch()
-    return {
-        onMessageTextChange: (text: string) => dispatch(updateNewMessageTextAC(text)),
-        addMessage: () => dispatch(addMessageAC())
+        messages: state.dialogsPage.messagesData,
     }
 }
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+export const DialogsContainer = compose<React.ComponentType>(
+    WithAuthRedirect,
+    connect(mapStateToProps, {
+        updateNewMessageText,
+        addMessage
+    }),
+
+)(Dialogs)
+
+// export const DialogsContainer = WithAuthRedirect(connect(mapStateToProps, {
+//     updateNewMessageText,
+//     addMessage
+// })(Dialogs))
