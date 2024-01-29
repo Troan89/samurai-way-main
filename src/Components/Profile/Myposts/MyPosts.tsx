@@ -46,7 +46,6 @@ export const MyPost = (props: MePostPropsType) => {
 
 
 
-
 //
 // import React, {ChangeEvent, useState} from "react";
 // import { addPostAC, updateNewPostTextAC } from "../../../state/profileReducer";

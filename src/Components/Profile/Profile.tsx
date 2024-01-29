@@ -6,13 +6,15 @@ import {Navigate} from "react-router-dom";
 
 type ProfilePropsType = {
     profile: UserProfile_T | null
+    status:string
+    updateUserStatus: (status:string) => void
 }
 
-export const Profile = ({profile}:ProfilePropsType) => {
+export const Profile = ({profile, status, updateUserStatus}:ProfilePropsType) => {
 
     return (
         <div>
-            <ProfileInfo profile={profile}/>
+            <ProfileInfo profile={profile} status={status} updateUserStatus={updateUserStatus}/>
             <MyPostContainer />
         </div>
     )

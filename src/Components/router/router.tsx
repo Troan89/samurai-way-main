@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
         errorElement: <Error404/>,
         children: [
             {
-                path: "/profile/:id/*",
+                path: "/profile/:id",
                 element: (
                     <ProfileContainer />
                 ),

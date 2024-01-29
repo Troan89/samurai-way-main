@@ -1,4 +1,4 @@
-import {addPost, setUserProfile, updateNewPostText} from "./ProfileReducer";
+import {addPost, setUserProfile, setUserStatus, updateNewPostText} from "./ProfileReducer";
 import {addMessage, updateNewMessageText} from "./DialogsReducer";
 import {
     follow,
@@ -89,6 +89,7 @@ export type ProfilePageType = {
     postsData: Array<PostsType>
     newPostText: string
     profile: UserProfile_T | null
+    status: string
 }
 export type DialogsDataType = {
     id: string
@@ -142,6 +143,7 @@ export type ActionType =
     | setUserProfileType
     | setUserDataType
     | setIsFollowingProgressType
+    | setUserStatusType
 
 export type AddPostType = ReturnType<typeof addPost>
 export type AddMessageType = ReturnType<typeof addMessage>
@@ -156,6 +158,7 @@ export type setIsFetchingType = ReturnType<typeof setIsFetching>
 export type setUserProfileType = ReturnType<typeof setUserProfile>
 export type setUserDataType = ReturnType<typeof setAuthUserData>
 export type setIsFollowingProgressType = ReturnType<typeof setIsFollowingProgress>
+export type setUserStatusType = ReturnType<typeof setUserStatus>
 
 
 

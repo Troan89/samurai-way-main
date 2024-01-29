@@ -7,14 +7,20 @@ export const usersApi = {
             .then(res => res.data)
     },
     followUser(userId: string) {
-        return instance.post<FollowUnfollowUsers_T>(`follow/${userId}`, {},)
+        return instance.post<ResponseUsers_T>(`follow/${userId}`, {},)
     },
     unfollowUser(userId: string) {
-        return instance.delete<FollowUnfollowUsers_T>(`follow/${userId}`,)
+        return instance.delete<ResponseUsers_T>(`follow/${userId}`,)
     },
+    getStatus(userId:string) {
+        return instance.get<string>(`profile/status/${userId}`)
+    },
+    updateStatus(status:string) {
+        return instance.put<ResponseUsers_T>('profile/status', {status})
+    }
 }
 
-type FollowUnfollowUsers_T = {
+type ResponseUsers_T = {
     resultCode: number
     fieldsErrors: []
     messages: string,

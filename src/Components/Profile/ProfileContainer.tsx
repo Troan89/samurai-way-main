@@ -2,16 +2,18 @@ import React from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../state/redux-store";
-import {setUserInfo} from "../../state/ProfileReducer";
+import {getUserStatus, setUserInfo, updateUserStatus} from "../../state/ProfileReducer";
 import {WithRouterHOC} from "../../hoc/withRouter";
-import {Navigate} from "react-router-dom";
 import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
-import {compose} from "redux";
+import {Navigate, NavLink} from "react-router-dom";
 
 export type ProfilePropsType = {
     profile: UserProfile_T | null
     id?: string
     setUserInfo: (userId: string) => void
+    getUserStatus:(userId: string) => void
+    status:string
+    updateUserStatus: (status:string) => void
 }
 
 export type UserProfile_T = {
@@ -38,11 +40,21 @@ export type UserPhotos_T = {
 export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
-        this.props.id !== ':id' && this.props.id && this.props.setUserInfo(this.props.id)
+        let userId = this.props.id
+        if (userId === ':id' || !userId) {
+
+            // userId = "28717"
+            return <Navigate to={'/profile/28717'} />
+        } else {
+            this.props.setUserInfo(userId)
+            this.props.getUserStatus(userId)
+        }
+        // userId && this.props.setUserInfo(userId)
+        // userId && this.props.getStatus(userId)
     }
 
     render() {
-        return <Profile profile={this.props.profile} />
+        return <Profile profile={this.props.profile} status={this.props.status} updateUserStatus={this.props.updateUserStatus}/>
     }
 }
 
@@ -54,6 +66,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 let mapStateToProps = (state: AppRootStateType) => {
     return {
         profile: state.profilePage.profile,
+        status: state.profilePage.status
     }
 }
 
@@ -68,5 +81,7 @@ let mapStateToProps = (state: AppRootStateType) => {
 
 export const ProfileContainer = WithAuthRedirect(connect(mapStateToProps,
     {
-        setUserInfo
+        setUserInfo,
+        getUserStatus,
+        updateUserStatus
     })(WithRouterHOC(ProfileContainerAPI)))

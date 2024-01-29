@@ -6,9 +6,11 @@ import {ProfileStatus} from "./ProfileStatus";
 
 type ProfileInfo_T ={
     profile: UserProfile_T | null
+    status:string
+    updateUserStatus: (status:string) => void
 }
 
-export const ProfileInfo = ({profile}: ProfileInfo_T) => {
+export const ProfileInfo = ({profile, status, updateUserStatus}: ProfileInfo_T) => {
     if (!profile) { // потом редирект на логин
         return <Preloader/>
     }
@@ -26,7 +28,7 @@ export const ProfileInfo = ({profile}: ProfileInfo_T) => {
             {/*</div>*/}
             <div className={s.descriptionBlock}>
                 <img src={profile.photos.large} />
-                <ProfileStatus status={"Hello"}/>
+                <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
                 <div>
                     Полное имя: {profile.fullName}
                 </div>
