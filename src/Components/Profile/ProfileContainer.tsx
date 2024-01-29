@@ -11,9 +11,9 @@ export type ProfilePropsType = {
     profile: UserProfile_T | null
     id?: string
     setUserInfo: (userId: string) => void
-    getUserStatus:(userId: string) => void
-    status:string
-    updateUserStatus: (status:string) => void
+    getUserStatus: (userId: string) => void
+    status: string
+    updateUserStatus: (status: string) => void
 }
 
 export type UserProfile_T = {
@@ -42,9 +42,8 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
     componentDidMount() {
         let userId = this.props.id
         if (userId === ':id' || !userId) {
-
             // userId = "28717"
-            return <Navigate to={'/profile/28717'} />
+            return <Navigate to={'/profile/28717'}/>
         } else {
             this.props.setUserInfo(userId)
             this.props.getUserStatus(userId)
@@ -54,7 +53,8 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
     }
 
     render() {
-        return <Profile profile={this.props.profile} status={this.props.status} updateUserStatus={this.props.updateUserStatus}/>
+        return <Profile profile={this.props.profile} status={this.props.status}
+                        updateUserStatus={this.props.updateUserStatus}/>
     }
 }
 

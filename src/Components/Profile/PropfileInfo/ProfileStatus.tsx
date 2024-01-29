@@ -1,4 +1,5 @@
 import React, {ChangeEvent} from 'react';
+import {ProfilePropsType} from "../ProfileContainer";
 
 type ProfileStatus_T = {
     status:string
@@ -25,6 +26,14 @@ export class ProfileStatus extends React.Component<ProfileStatus_T>{
         this.setState({
             status: e.currentTarget.value
         })
+    }
+
+    componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render() {
