@@ -5,7 +5,7 @@ export const AuthApi = {
         return instance.get<Response_T<dataMeInfo_T>>(`auth/me`)
     },
     login(data:RequestLogin_T){
-        return instance.post<RequestLogin_T>(`auth/login`, data)
+        return instance.post<Response_T<{ userId: string }>>(`auth/login`, data)
     },
     logOut() {
         return instance.delete<Response_T<{}>>(`auth/login`)

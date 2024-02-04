@@ -11,6 +11,7 @@ import {
 } from "./UsersReducer";
 import {UserProfile_T} from "../Components/Profile/ProfileContainer";
 import {setAuthUserData} from "./AuthReducer";
+import {setInitialized} from "./appReducer";
 
 // export let store: StoreType = {
 //     _state: {
@@ -141,6 +142,7 @@ export type ActionType =
     | setUserDataType
     | setIsFollowingProgressType
     | setUserStatusType
+| setInitializedType
 
 export type AddPostType = ReturnType<typeof addPost>
 export type AddMessageType = ReturnType<typeof addMessage>
@@ -154,6 +156,7 @@ export type setUserProfileType = ReturnType<typeof setUserProfile>
 export type setUserDataType = ReturnType<typeof setAuthUserData>
 export type setIsFollowingProgressType = ReturnType<typeof setIsFollowingProgress>
 export type setUserStatusType = ReturnType<typeof setUserStatus>
+export type setInitializedType = ReturnType<typeof setInitialized>
 
 
 

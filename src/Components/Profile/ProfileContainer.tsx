@@ -44,6 +44,9 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
         let userId = this.props.id
         if (userId === ':id' || userId === undefined) {
             userId = "28717"
+            // if (!userId) {
+            //     this.props.history.push("/login")
+            // }
         }
         this.props.setUserInfo(userId)
         this.props.getUserStatus(userId)

@@ -6,13 +6,15 @@ import {UsersReducer} from "./UsersReducer";
 import {AuthReducer} from "./AuthReducer";
 import {thunk, ThunkAction, ThunkDispatch} from 'redux-thunk'
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import {appReducer} from "./appReducer";
 
 let rootReducers = combineReducers({
     profilePage: ProfileReducer,
     dialogsPage: DialogsReducer,
     sidebar: SidebarReducer,
     usersPage: UsersReducer,
-    auth: AuthReducer
+    auth: AuthReducer,
+    app: appReducer
 })
 
 // export let store = legacy_createStore(rootReducers)

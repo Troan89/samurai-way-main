@@ -64,6 +64,7 @@ let mapStateToProps = (state: AppRootStateType) => {
 }
 
 export const UsersContainer = compose<React.ComponentType>(
+    // WithAuthRedirect,
     connect(mapStateToProps,
         {
             setIsFetching,
@@ -73,7 +74,7 @@ export const UsersContainer = compose<React.ComponentType>(
             followUser,
             // setUserInfo
         }),
-    WithAuthRedirect
+
 )(UsersContainerAPI)
 
 // export const UsersContainer = connect(mapStateToProps,

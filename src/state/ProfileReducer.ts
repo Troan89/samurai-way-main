@@ -38,6 +38,7 @@ export const setUserStatus = (status:string) => ({type: SET_STATUS, status} as c
 
 //thunk
 export const setUserInfo = (userId:string) => (dispatch: Dispatch) => {
+    debugger
     ProfileApi.getUserInfo(userId)
         .then((res) => {
             dispatch(setUserProfile(res.data))

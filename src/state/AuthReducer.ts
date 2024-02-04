@@ -3,7 +3,9 @@ import {Dispatch} from "redux";
 import {AuthApi, RequestLogin_T} from "../api/auth-api";
 import {ProfileApi} from "../api/profile-api";
 import {setUserProfile} from "./ProfileReducer";
-import {AppThunk, AppThunkDispatch} from "./redux-store";
+import {AppThunk} from "./redux-store";
+import {stopSubmit} from "redux-form";
+
 
 const SET_USER_DATA = 'SET_USER_DATA'
 
@@ -37,25 +39,23 @@ export const setAuthUserData = (id: number | null, login: string | null, email: 
 
 //thunk
 export const getUserInfo = () => (dispatch: Dispatch) => {
-    AuthApi.getMeInfo()
+    return AuthApi.getMeInfo()
         .then((res) => {
             if (res.data.resultCode === 0) {
                 let {id, login, email} = res.data.data
                 dispatch(setAuthUserData(id, login, email, true))
-                // dispatch(setIsLoggedInAC(true))
-                return id
             }
         })
-        .then((id) => {
-            ProfileApi.getUserInfo(String(id))
-                .then((res) => {
-                    dispatch(setUserProfile(res.data))
-                })
-        })
 }
-export const login = (data:RequestLogin_T): AppThunk => async (dispatch) => {
+export const login = (data: RequestLogin_T): AppThunk => async (dispatch) => {
     const res = await AuthApi.login(data)
-    dispatch(getUserInfo())
+    try {
+        dispatch(getUserInfo())
+    } catch (e) {
+        console.log(e)
+        // const error = e.
+    }
+
 }
 export const LogOut = () => async (dispatch: Dispatch) => {
     const res = await AuthApi.logOut()
