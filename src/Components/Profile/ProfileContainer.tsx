@@ -41,15 +41,11 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
         let userId = this.props.id
-        if (userId === ':id' || !userId) {
-            // userId = "28717"
-            return <Navigate to={'/profile/28717'}/>
-        } else {
-            this.props.setUserInfo(userId)
-            this.props.getUserStatus(userId)
+        if (userId === ':id' || userId === undefined) {
+            userId = "28717"
         }
-        // userId && this.props.setUserInfo(userId)
-        // userId && this.props.getStatus(userId)
+        this.props.setUserInfo(userId)
+        this.props.getUserStatus(userId)
     }
 
     render() {

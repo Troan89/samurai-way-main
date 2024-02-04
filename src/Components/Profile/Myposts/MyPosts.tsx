@@ -1,49 +1,26 @@
-import React, {ChangeEvent, useState} from "react";
+import React from "react";
 import {PostsType} from "../../../state/State";
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
+import {FormPost} from "./FormPost";
 
 type MePostPropsType = {
-    onPostChange:(text:string)=>void
-    addPost:()=>void
     posts: PostsType[]
 }
 
 export const MyPost = (props: MePostPropsType) => {
-    const [postText, setPostText] = useState<string>('')
-
     let postsElement = props.posts.map((post, index) => <Post key={index} message={post.message} like={post.like}/>)
-
-    const addPost = () => {
-        props.addPost()
-        setPostText('')
-    }
-    const onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
-        setPostText(e.currentTarget.value)
-        props.onPostChange(postText)
-    }
 
     return (
         <div className={s.postsBlock}>
             My post
-            <div>
-                <div>
-                    <textarea
-                        value={postText}
-                        onChange={onPostChange}
-                    />
-                </div>
-                <div>
-                    <button onClick={addPost}>Добавить пост</button>
-                </div>
-            </div>
+            <FormPost />
             <div className={s.posts}>
                 {postsElement}
             </div>
         </div>
     )
 }
-
 
 
 //

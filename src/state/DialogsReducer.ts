@@ -28,23 +28,19 @@ const initialState: DialogsPageType = {
         {id: "4", name: 'Alina'},
         {id: "5", name: 'Daniil'},
     ],
-    newPostText: ''
 }
 
 export const DialogsReducer = (state = initialState, action: ActionType): DialogsPageType => {
     switch (action.type) {
         case ADD_MESSAGE:
-            return {...state, messagesData: [...state.messagesData, {id: "16", userId: "6", message: state.newPostText}]}
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {...state, newPostText: action.messageText}
+            return {...state, messagesData: [...state.messagesData, {id: "16", userId: "6", message: action.messageText}]}
     }
     return state
 }
 
 
 //action
-export const addMessage = () => ({type: ADD_MESSAGE} as const)
-export const updateNewMessageText = (messageText:string) => ({type: UPDATE_NEW_MESSAGE_TEXT, messageText} as const)
+export const addMessage = (messageText:string) => ({type: ADD_MESSAGE, messageText} as const)
 
 
 //types

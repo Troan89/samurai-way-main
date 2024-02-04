@@ -1,6 +1,6 @@
 import React from "react";
 import {ActionType, DialogsDataType, MessagesDataType} from "../../state/State";
-import {addMessage, updateNewMessageText} from '../../state/DialogsReducer';
+import {addMessage} from '../../state/DialogsReducer';
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../state/redux-store";
 import {Dialogs} from "./Dialogs";
@@ -10,7 +10,6 @@ import {compose} from "redux";
 type DialogsPropsType = {
     dialogs: DialogsDataType[]
     messages: MessagesDataType[]
-    updateNewMessageText: (text: string) => void
     addMessage: () => void
 }
 
@@ -48,7 +47,6 @@ let mapStateToProps = (state: AppRootStateType) => {
 export const DialogsContainer = compose<React.ComponentType>(
     WithAuthRedirect,
     connect(mapStateToProps, {
-        updateNewMessageText,
         addMessage
     }),
 

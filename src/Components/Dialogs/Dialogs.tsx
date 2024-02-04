@@ -1,11 +1,13 @@
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import React, {ChangeEvent, useState} from "react";
+import React from "react";
 import {DialogsDataType, MessagesDataType} from "../../state/State";
-import {Navigate} from "react-router-dom";
-import {updateNewMessageText} from "../../state/DialogsReducer";
+import {addMessage} from "../../state/DialogsReducer";
 import {useAppDispatch} from "../../state/redux-store";
+import {useFormik} from "formik";
+import {TextField} from "@mui/material";
+import {FormMessage} from "./FormMessage";
 
 
 type DialogsPropsType = {
@@ -16,42 +18,18 @@ type DialogsPropsType = {
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
-    const [messageText, setMessageText] = useState<string>('')
-
     let dialogsElements = props.dialogs.map((dialog, index) => <DialogItem key={index} name={dialog.name}
                                                                            id={dialog.id}/>)
     let messagesElements = props.messages.map((message, index) => <Message key={index} message={message.message}
                                                                            id={message.id}/>)
-const dispatch = useAppDispatch()
-
-    const addMessage = () => {
-        props.addMessage()
-        setMessageText('')
-    }
-
-    const onMessageTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setMessageText(e.currentTarget.value)
-        dispatch(updateNewMessageText(messageText))
-    }
-
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogsElements}
             </div>
-            <div className={s.messages}>
-                {messagesElements}
-                <div>
-                    <textarea
-                        onChange={onMessageTextChange}
-                        value={messageText}
-                    />
-                </div>
-                <div>
-                    <button onClick={addMessage}>Добавить сообщение</button>
-                </div>
-            </div>
-
+            <div>{messagesElements}</div>
+            <FormMessage />
         </div>
     )
 }
+

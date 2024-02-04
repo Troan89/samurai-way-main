@@ -1,5 +1,5 @@
-import {addPost, setUserProfile, setUserStatus, updateNewPostText} from "./ProfileReducer";
-import {addMessage, updateNewMessageText} from "./DialogsReducer";
+import {addPost, setUserProfile, setUserStatus} from "./ProfileReducer";
+import {addMessage} from "./DialogsReducer";
 import {
     follow,
     setCurrentPage,
@@ -10,7 +10,7 @@ import {
     unfollow
 } from "./UsersReducer";
 import {UserProfile_T} from "../Components/Profile/ProfileContainer";
-import {setAuthUserData} from "./AuthReducer";
+import {setAuthUserData, setIsLoggedInAC} from "./AuthReducer";
 
 // export let store: StoreType = {
 //     _state: {
@@ -83,11 +83,10 @@ export type SidebarType = {}
 export type DialogsPageType = {
     messagesData: Array<MessagesDataType>
     dialogsData: Array<DialogsDataType>
-    newPostText: string
+    // newPostText: string
 }
 export type ProfilePageType = {
     postsData: Array<PostsType>
-    newPostText: string
     profile: UserProfile_T | null
     status: string
 }
@@ -131,9 +130,7 @@ export type PostsType = {
 
 export type ActionType =
     AddPostType
-    | UpdateNewPostTextType
     | AddMessageType
-    | UpdateNewMessageTextType
     | FollowType
     | UnfollowType
     | setUsersType
@@ -144,11 +141,10 @@ export type ActionType =
     | setUserDataType
     | setIsFollowingProgressType
     | setUserStatusType
+    | SetIsLoggedInType
 
 export type AddPostType = ReturnType<typeof addPost>
 export type AddMessageType = ReturnType<typeof addMessage>
-export type UpdateNewPostTextType = ReturnType<typeof updateNewPostText>
-export type UpdateNewMessageTextType = ReturnType<typeof updateNewMessageText>
 export type FollowType = ReturnType<typeof follow>
 export type UnfollowType = ReturnType<typeof unfollow>
 export type setUsersType = ReturnType<typeof setUsers>
@@ -159,6 +155,7 @@ export type setUserProfileType = ReturnType<typeof setUserProfile>
 export type setUserDataType = ReturnType<typeof setAuthUserData>
 export type setIsFollowingProgressType = ReturnType<typeof setIsFollowingProgress>
 export type setUserStatusType = ReturnType<typeof setUserStatus>
+export type SetIsLoggedInType = ReturnType<typeof setIsLoggedInAC>
 
 
 
