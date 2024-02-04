@@ -12,24 +12,15 @@ type AppPropsType = {
 }
 
 const App = (props: AppPropsType) => {
-    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
-    const dispatch = useAppDispatch()
-
     // useEffect(() => {
     //     dispatch(getUserInfo())
     // })
 
     const location = useLocation()
-    const navigate = useNavigate()
 
     if (location.pathname === '/') {
-        // navigate('/profile')
         return <Navigate to={'/profile/28717'}/>
     }
-
-    // if (isLoggedIn) {
-    //     return <Navigate to={'/profile'}/>
-    // }
 
     return (
         <div className="app-wrapper">

@@ -3,6 +3,7 @@ import {Dispatch} from "redux";
 import {AuthApi, RequestLogin_T} from "../api/auth-api";
 import {ProfileApi} from "../api/profile-api";
 import {setUserProfile} from "./ProfileReducer";
+import {AppThunk, AppThunkDispatch} from "./redux-store";
 
 const SET_USER_DATA = 'SET_USER_DATA'
 
@@ -11,34 +12,28 @@ const initialState: AuthReducer_T = {
     email: null,
     login: null,
     isAuth: false,
-    isLoggedIn: false
 }
 type AuthReducer_T = {
     id: number | null,
     email: string | null,
     login: string | null,
     isAuth: boolean | null
-    isLoggedIn: boolean | null
 }
 
 export const AuthReducer = (state = initialState, action: ActionType): AuthReducer_T => {
     switch (action.type) {
         case SET_USER_DATA: {
-            return {...state, ...action.data, isAuth: true}
+            return {...state, ...action.data}
         }
-        case "login/SET-IS-LOGGED-IN":
-            return {...state, isLoggedIn: action.value}
     }
     return state
 }
 
 //action
-export const setAuthUserData = (id: number, login: string, email: string) => ({
+export const setAuthUserData = (id: number | null, login: string | null, email: string | null, isAuth: boolean) => ({
     type: SET_USER_DATA,
-    data: {id, login, email}
+    data: {id, login, email, isAuth}
 } as const)
-export const setIsLoggedInAC = (value: boolean) =>
-    ({type: 'login/SET-IS-LOGGED-IN', value} as const)
 
 //thunk
 export const getUserInfo = () => (dispatch: Dispatch) => {
@@ -46,8 +41,8 @@ export const getUserInfo = () => (dispatch: Dispatch) => {
         .then((res) => {
             if (res.data.resultCode === 0) {
                 let {id, login, email} = res.data.data
-                dispatch(setAuthUserData(id, login, email))
-                dispatch(setIsLoggedInAC(true))
+                dispatch(setAuthUserData(id, login, email, true))
+                // dispatch(setIsLoggedInAC(true))
                 return id
             }
         })
@@ -58,6 +53,11 @@ export const getUserInfo = () => (dispatch: Dispatch) => {
                 })
         })
 }
-export const setLogin = (data:RequestLogin_T) => async (dispatch: Dispatch) => {
-    const res =  AuthApi.login(data)
+export const login = (data:RequestLogin_T): AppThunk => async (dispatch) => {
+    const res = await AuthApi.login(data)
+    dispatch(getUserInfo())
+}
+export const LogOut = () => async (dispatch: Dispatch) => {
+    const res = await AuthApi.logOut()
+    dispatch(setAuthUserData(null, null, null, false))
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
-import {AppRootStateType} from "../../state/redux-store";
+import {AppRootStateType, useAppSelector} from "../../state/redux-store";
 import {getUserStatus, setUserInfo, updateUserStatus} from "../../state/ProfileReducer";
 import {WithRouterHOC} from "../../hoc/withRouter";
 import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
@@ -14,6 +14,7 @@ export type ProfilePropsType = {
     getUserStatus: (userId: string) => void
     status: string
     updateUserStatus: (status: string) => void
+    isAuth: boolean | null
 }
 
 export type UserProfile_T = {
@@ -49,6 +50,10 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
     }
 
     render() {
+        if (!this.props.isAuth) {
+            return <Navigate to={'/login'}/>
+        }
+
         return <Profile profile={this.props.profile} status={this.props.status}
                         updateUserStatus={this.props.updateUserStatus}/>
     }
@@ -62,7 +67,8 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 let mapStateToProps = (state: AppRootStateType) => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        isAuth: state.auth.isAuth
     }
 }
 

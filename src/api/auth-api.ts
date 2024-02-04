@@ -8,7 +8,7 @@ export const AuthApi = {
         return instance.post<RequestLogin_T>(`auth/login`, data)
     },
     logOut() {
-
+        return instance.delete<Response_T<{}>>(`auth/login`)
     }
 }
 

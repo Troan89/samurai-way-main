@@ -2,15 +2,14 @@ import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../state/redux-store";
 import {useFormik} from "formik";
 import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, TextField} from "@mui/material";
-import {setLogin} from "../../state/AuthReducer";
+import {login} from "../../state/AuthReducer";
 import {Navigate} from "react-router-dom";
 
 export const Login = () => {
 
-    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
+    const isAuth = useAppSelector(state => state.auth.isAuth)
 
     const dispatch = useAppDispatch()
-
 
     const formik = useFormik({
         initialValues: {
@@ -18,8 +17,8 @@ export const Login = () => {
             password: '',
             rememberMe: false
         },
-        onSubmit: async values => {
-            const res = await dispatch(setLogin(values))
+        onSubmit: values => {
+            dispatch(login(values))
             formik.resetForm({
                 values: {email: '', password: '', rememberMe: false},
             })
@@ -39,8 +38,7 @@ export const Login = () => {
             return errors
         }
     })
-
-    if (isLoggedIn) {
+    if (isAuth) {
         return <Navigate to={'/profile'}/>
     }
 
