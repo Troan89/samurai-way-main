@@ -1,6 +1,6 @@
 import {ActionType, UsersDataType, UsersType} from "./State";
 import {Dispatch} from "redux";
-import {usersApi} from "../api/users-api";
+import {usersApi} from "api/users-api";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
