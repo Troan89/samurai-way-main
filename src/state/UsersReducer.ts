@@ -64,9 +64,11 @@ export const setIsFollowingProgress = (followingInProgress: boolean, userId: str
 } as const)
 
 //thunk
-export const getUsers = (currentPage: number, pageSize: number) => (dispatch: Dispatch<ActionType>) => {
+export const getUsers = (page: number, pageSize: number) => (dispatch: Dispatch<ActionType>) => {
     dispatch(setIsFetching(true))
-    usersApi.fetchUsers(currentPage, pageSize)
+    dispatch(setCurrentPage(page))
+
+    usersApi.fetchUsers(page, pageSize)
         .then((res) => {
             dispatch(setUsers(res.items))
             dispatch(setTotalUsersCount(res.totalCount))
