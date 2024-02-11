@@ -1,11 +1,6 @@
-import {ActionType, UsersDataType, UsersType} from "./State";
-import {Dispatch} from "redux";
-import {AuthApi, RequestLogin_T} from "../api/auth-api";
-import {ProfileApi} from "../api/profile-api";
-import {setUserProfile} from "./ProfileReducer";
-import {AppThunk} from "./redux-store";
-import {stopSubmit} from "redux-form";
-import {getUserInfo} from "./AuthReducer";
+import { ActionType } from "./State"
+import { AppThunk } from "./redux-store"
+import { getUserInfo } from "./AuthReducer"
 
 
 const SET_INITIALIZER = 'SET_INITIALIZER'

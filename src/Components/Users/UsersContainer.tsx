@@ -2,7 +2,7 @@ import React from "react"
 import { UsersType } from "state/State"
 import { connect } from "react-redux"
 import { AppRootStateType } from "state/redux-store"
-import { followUser, setIsFetching, setIsFollowingProgress, unfollowUser } from "state/UsersReducer"
+import { followUser, getUsers, setIsFetching, setIsFollowingProgress, unfollowUser } from "state/UsersReducer"
 import { Preloader } from "../common/Preloader/Preloader"
 import { compose } from "redux"
 import {
@@ -11,7 +11,7 @@ import {
   getCurrentPageSelector,
   getIsFetchingSelector,
   getFollowingInProgressSelector,
-  getUsers,
+  getUsersSelector,
 } from "selectors/usersSelectors"
 import { Users } from "Components/Users/Users"
 
@@ -60,8 +60,8 @@ export class UsersContainerAPI extends React.Component<UsersPropsType, any> {
 
 let mapStateToProps = (state: AppRootStateType) => {
   return {
-    // users: getUsersSelector(state),
-    users: getUsers(state),
+    users: getUsersSelector(state),
+    // users: getUsers(state),
     pageSize: getUsersPageSizeSelector(state),
     totalUserCount: getTotalUsersCountSelector(state),
     currentPage: getCurrentPageSelector(state),

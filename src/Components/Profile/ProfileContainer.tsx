@@ -1,11 +1,11 @@
-import React from "react";
-import {Profile} from "./Profile";
-import {connect} from "react-redux";
-import {AppRootStateType, useAppSelector} from "../../state/redux-store";
-import {getUserStatus, setUserInfo, updateUserStatus} from "../../state/ProfileReducer";
-import {WithRouterHOC} from "../../hoc/withRouter";
-import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
-import {Navigate, NavLink} from "react-router-dom";
+import React from "react"
+import { Profile } from "./Profile"
+import { connect } from "react-redux"
+import { AppRootStateType } from "state/redux-store"
+import { getUserStatus, setUserInfo, updateUserStatus } from "state/ProfileReducer"
+import { WithRouterHOC } from "hoc/withRouter"
+import { WithAuthRedirect } from "hoc/WithAuthRedirect"
+import { Navigate } from "react-router-dom"
 
 export type ProfilePropsType = {
     profile: UserProfile_T | null

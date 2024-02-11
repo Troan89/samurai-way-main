@@ -1,10 +1,8 @@
-import React, {useEffect} from "react";
-import s from './ProfileInfo.module.css'
-import {UserProfile_T} from "../ProfileContainer";
-import {Preloader} from "../../common/Preloader/Preloader";
-import {ProfileStatus} from "./ProfileStatus";
-import {useAppDispatch, useAppSelector} from "../../../state/redux-store";
-import {getUserStatus} from "../../../state/ProfileReducer";
+import React from "react"
+import s from "./ProfileInfo.module.css"
+import { UserProfile_T } from "../ProfileContainer"
+import { Preloader } from "../../common/Preloader/Preloader"
+import { ProfileStatusWithHook } from "Components/Profile/PropfileInfo/ProfileStatusWithHook"
 
 type ProfileInfo_T = {
     profile: UserProfile_T | null
@@ -25,7 +23,7 @@ export const ProfileInfo = ({profile, status, updateUserStatus}: ProfileInfo_T) 
         <div>
             <div className={s.descriptionBlock}>
                 <img src={profile.photos.large}/>
-                <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
+                <ProfileStatusWithHook status={status} updateUserStatus={updateUserStatus}/>
                 <div>
                     Полное имя: {profile.fullName}
                 </div>
