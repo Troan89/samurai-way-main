@@ -4,19 +4,20 @@ import {RouterProvider} from "react-router-dom";
 import {router} from "./Components/router/router";
 import {store} from "./state/redux-store";
 import {Provider} from "react-redux";
+import {Preloader} from "./Components/common/Preloader/Preloader";
 
 // type rerenderEntireTreeType = {
 //     dataState: AppRootStateType
 // }
 
 // let rerenderEntireTree = () => {
-    ReactDOM.render(
-        // <App />,
+ReactDOM.render(
+    // <App />,
         <Provider store={store}>
-            <RouterProvider router={router} />
+            <RouterProvider router={router}/>
         </Provider>,
-        document.getElementById('root')
-    );
+    document.getElementById('root')
+);
 // }
 //
 //

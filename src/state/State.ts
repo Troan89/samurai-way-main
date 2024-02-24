@@ -1,4 +1,4 @@
-import {addPost, setUserProfile, setUserStatus} from "./ProfileReducer";
+import {addPost, deletePost, setUserProfile, setUserStatus} from "./ProfileReducer";
 import {addMessage} from "./DialogsReducer";
 import {
     follow,
@@ -142,7 +142,8 @@ export type ActionType =
     | setUserDataType
     | setIsFollowingProgressType
     | setUserStatusType
-| setInitializedType
+    | setInitializedType
+    | DeletePostType
 
 export type AddPostType = ReturnType<typeof addPost>
 export type AddMessageType = ReturnType<typeof addMessage>
@@ -157,6 +158,7 @@ export type setUserDataType = ReturnType<typeof setAuthUserData>
 export type setIsFollowingProgressType = ReturnType<typeof setIsFollowingProgress>
 export type setUserStatusType = ReturnType<typeof setUserStatus>
 export type setInitializedType = ReturnType<typeof setInitialized>
+export type DeletePostType = ReturnType<typeof deletePost>
 
 
 

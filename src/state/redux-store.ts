@@ -1,4 +1,4 @@
-import {AnyAction, applyMiddleware, combineReducers, createStore} from "redux";
+import {AnyAction, applyMiddleware, combineReducers, legacy_createStore} from "redux";
 import {ProfileReducer} from "./ProfileReducer";
 import {DialogsReducer} from "./DialogsReducer";
 import {SidebarReducer} from "./SidebarReducer";
@@ -17,8 +17,10 @@ let rootReducers = combineReducers({
     app: appReducer
 })
 
-// export let store = legacy_createStore(rootReducers)
-export let store = createStore(rootReducers, applyMiddleware(thunk))
+// const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose
+// export let store = legacy_createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)))
+
+export let store = legacy_createStore(rootReducers, applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof rootReducers>
 

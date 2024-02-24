@@ -38,7 +38,7 @@ export type UserPhotos_T = {
     large: string;
 }
 
-export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
+class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
         let userId = this.props.id
@@ -84,9 +84,11 @@ let mapStateToProps = (state: AppRootStateType) => {
 //     WithAuthRedirect
 // )(ProfileContainerAPI)
 
-export const ProfileContainer = WithAuthRedirect(connect(mapStateToProps,
+const ProfileContainer = WithAuthRedirect(connect(mapStateToProps,
     {
         setUserInfo,
         getUserStatus,
         updateUserStatus
     })(WithRouterHOC(ProfileContainerAPI)))
+
+export default ProfileContainer

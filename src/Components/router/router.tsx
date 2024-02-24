@@ -1,12 +1,12 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
-import {Error404} from "../Error/Error404";
-import React from "react";
+import React, {lazy} from "react";
 import App from "../../App";
-import {DialogsContainer} from "../Dialogs/DialogsContainer";
-import {UsersContainer} from "../Users/UsersContainer";
-import {ProfileContainer} from "../Profile/ProfileContainer";
-import {Login} from "../Login/Login";
 
+const DialogsContainer = lazy(() => import("../Dialogs/DialogsContainer"))
+const ProfileContainer = lazy(() => import("../Profile/ProfileContainer"))
+const UsersContainer = lazy(() => import("../Users/UsersContainer"))
+const Login = lazy(() => import("../Login/Login"))
+const Error404 = lazy(() => import("../Error/Error404"))
 
 export const router = createBrowserRouter([
     {

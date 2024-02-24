@@ -27,16 +27,18 @@ type UsersPropsType = {
   getUsers: (currentPage: number, pageSize: number) => void
   unfollowUser: (userId: string) => void
   followUser: (userId: string) => void
-  // setUserInfo:(userId: string) => void
+
 }
 
 export class UsersContainerAPI extends React.Component<UsersPropsType, any> {
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize)
+    const {currentPage, pageSize} = this.props
+    this.props.getUsers(currentPage, pageSize)
   }
 
   onPageChanged = (page: number) => {
-    this.props.getUsers(page, this.props.pageSize)
+    const { pageSize} = this.props
+    this.props.getUsers(page, pageSize)
   }
 
   render() {
@@ -61,7 +63,6 @@ export class UsersContainerAPI extends React.Component<UsersPropsType, any> {
 let mapStateToProps = (state: AppRootStateType) => {
   return {
     users: getUsersSelector(state),
-    // users: getUsers(state),
     pageSize: getUsersPageSizeSelector(state),
     totalUserCount: getTotalUsersCountSelector(state),
     currentPage: getCurrentPageSelector(state),
@@ -70,7 +71,7 @@ let mapStateToProps = (state: AppRootStateType) => {
   }
 }
 
-export const UsersContainer = compose<React.ComponentType>(
+const UsersContainer = compose<React.ComponentType>(
   // WithAuthRedirect,
   connect(mapStateToProps, {
     setIsFetching,
@@ -81,11 +82,6 @@ export const UsersContainer = compose<React.ComponentType>(
   }),
 )(UsersContainerAPI)
 
-// export const UsersContainer = connect(mapStateToProps,
-//     {
-//         setIsFetching,
-//         setIsFollowingProgress,
-//         getUsers,
-//         unfollowUser,
-//         followUser
-//     })(UsersContainerAPI)
+export default UsersContainer
+
+

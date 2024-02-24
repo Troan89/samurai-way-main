@@ -5,7 +5,7 @@ import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, TextFi
 import {login} from "../../state/AuthReducer";
 import {Navigate} from "react-router-dom";
 
-export const Login = () => {
+const Login = () => {
 
     const isAuth = useAppSelector(state => state.auth.isAuth)
 
@@ -89,3 +89,5 @@ export type LoginDate_T = {
     password: string
     rememberMe: boolean
 }
+
+export default Login
