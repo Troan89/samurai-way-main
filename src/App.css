@@ -12,11 +12,13 @@ ul li {
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
+    border-radius: 10px;
 }
 
 .app-wrapper-content {
     grid-area: c;
     background-color: cyan;
+    border-radius: 10px;
 }
 
 

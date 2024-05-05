@@ -1,6 +1,7 @@
-import {createBrowserRouter, Navigate} from "react-router-dom";
+import {createBrowserRouter, createHashRouter, Navigate} from "react-router-dom";
 import React, {lazy} from "react";
 import App from "../../App";
+import {Preloader} from "../common/Preloader/Preloader";
 
 const DialogsContainer = lazy(() => import("../Dialogs/DialogsContainer"))
 const ProfileContainer = lazy(() => import("../Profile/ProfileContainer"))
@@ -13,26 +14,28 @@ export const router = createBrowserRouter([
         path: "/",
         element: <App/>,
         errorElement: <Error404/>,
+
         children: [
             {
-                path: "/profile/:id?",
+                path: `/profile/:id?`,
                 element: (
-                    <ProfileContainer />
+                    <ProfileContainer/>
                 ),
+                loader: () => <Preloader />
             },
             {
                 path: "/dialogs",
                 element: (
-                    <DialogsContainer />
+                    <DialogsContainer/>
                 ),
             },
             {
                 path: "/users",
-                element: <UsersContainer />
+                element: <UsersContainer/>
             },
             {
                 path: "/login",
-                element: <Login />
+                element: <Login/>
             },
             {
                 path: "/404",

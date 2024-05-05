@@ -26,7 +26,7 @@ export type RequestLogin_T = {
     email:string
     password:string
     rememberMe:boolean
-    captcha?: string
+    captcha?: string | null
 }
 
 

@@ -10,7 +10,6 @@ type MePostPropsType = {
 
 export const MyPost = (props: MePostPropsType) => {
     let postsElement = props.posts.map((post, index) => <Post key={index} message={post.message} like={post.like}/>)
-    console.log('fuck')
     return (
         <div className={s.postsBlock}>
             My post

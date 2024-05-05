@@ -28,7 +28,7 @@ export const Paginator = ({pageSize, onPageChanged, currentPage, totalItemsCount
         {portionNumber > 1 && <button onClick={()=>serPortionNumber(portionNumber - 1)}>Prev</button>}
             {pages.
                 filter(page=> page >= leftPortionPageNumber && page <= rightPortionPageNumber)
-                .map(page => <span
+                .map(page => <span key={page}
                 className={cn({[styles.selectedPage]: currentPage === page}, styles.pageNumber)}
                 onClick={() => onPageChanged(page)}> {page} </span>)}
         {portionCount > portionNumber && <button onClick={()=>serPortionNumber(portionNumber + 1)}>Next</button>}

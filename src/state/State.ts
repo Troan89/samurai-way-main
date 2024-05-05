@@ -1,4 +1,4 @@
-import {addPost, deletePost, setUserProfile, setUserStatus} from "./ProfileReducer";
+import {addPost, deletePost, setPhoto, setUserProfile, setUserStatus} from "./ProfileReducer";
 import {addMessage} from "./DialogsReducer";
 import {
     follow,
@@ -10,7 +10,7 @@ import {
     unfollow
 } from "./UsersReducer";
 import {UserProfile_T} from "../Components/Profile/ProfileContainer";
-import {setAuthUserData} from "./AuthReducer";
+import {getCaptchaUrl, setAuthUserData} from "./AuthReducer";
 import {setInitialized} from "./appReducer";
 
 // export let store: StoreType = {
@@ -144,6 +144,8 @@ export type ActionType =
     | setUserStatusType
     | setInitializedType
     | DeletePostType
+| SetPhotoType
+| GetCaptchaUrlType
 
 export type AddPostType = ReturnType<typeof addPost>
 export type AddMessageType = ReturnType<typeof addMessage>
@@ -159,6 +161,8 @@ export type setIsFollowingProgressType = ReturnType<typeof setIsFollowingProgres
 export type setUserStatusType = ReturnType<typeof setUserStatus>
 export type setInitializedType = ReturnType<typeof setInitialized>
 export type DeletePostType = ReturnType<typeof deletePost>
+export type SetPhotoType = ReturnType<typeof setPhoto>
+export type GetCaptchaUrlType = ReturnType<typeof getCaptchaUrl>
 
 
 

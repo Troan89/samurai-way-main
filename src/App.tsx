@@ -12,12 +12,17 @@ type AppPropsType = {
 }
 
 const App = (props: AppPropsType) => {
+  const catchAllUnhandledErrors = (promiseRejectionEvent: any) => {
+    alert(promiseRejectionEvent)
+    console.log(promiseRejectionEvent)
+  }
+
   const initialized = useAppSelector((state) => state.app.initialized)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(initializeApp())
-  })
+  }, [initializeApp])
 
   const location = useLocation()
 
@@ -30,13 +35,13 @@ const App = (props: AppPropsType) => {
 
   return (
     <div className="app-wrapper">
-      <HeaderContainer />
-      <Navbar />
-      <div className="app-wrapper-content">
+        <HeaderContainer />
+        <Navbar />
+      <main className="app-wrapper-content">
         <React.Suspense fallback={<Preloader />}>
           <Outlet />
         </React.Suspense>
-      </div>
+      </main>
     </div>
   )
 }

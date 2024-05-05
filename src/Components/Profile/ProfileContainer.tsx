@@ -2,7 +2,7 @@ import React from "react"
 import { Profile } from "./Profile"
 import { connect } from "react-redux"
 import { AppRootStateType } from "state/redux-store"
-import { getUserStatus, setUserInfo, updateUserStatus } from "state/ProfileReducer"
+import {getUserStatus, savePhoto, setUserInfo, updateUserStatus} from "state/ProfileReducer"
 import { WithRouterHOC } from "hoc/withRouter"
 import { WithAuthRedirect } from "hoc/WithAuthRedirect"
 import { Navigate } from "react-router-dom"
@@ -15,41 +15,48 @@ export type ProfilePropsType = {
     status: string
     updateUserStatus: (status: string) => void
     isAuth: boolean | null
+    savePhoto: (photo: File) => void
 }
 
 export type UserProfile_T = {
     aboutMe: string;
-    contacts: UserContacts_T;
+    contacts: any;
     lookingForAJob: boolean;
     lookingForAJobDescription: string;
     fullName: string;
     userId: number;
     photos: UserPhotos_T;
 }
-export type UserContacts_T = {
-    facebook: string;
-    vk: string;
-    twitter: string;
-    instagram: string;
-    github: string;
-}
 export type UserPhotos_T = {
-    small: string;
-    large: string;
+    small: string | undefined;
+    large: string | undefined;
 }
 
 class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
-    componentDidMount() {
+    refreshProfile(){
         let userId = this.props.id
-        if (userId === ':id' || userId === undefined) {
-            userId = "28717"
+        // if (userId === ':id' || userId === undefined) {
+        if (!userId) {
+            userId = '28717'
             // if (!userId) {
             //     this.props.history.push("/login")
             // }
         }
-        this.props.setUserInfo(userId)
-        this.props.getUserStatus(userId)
+        if (userId) {
+            this.props.setUserInfo(userId)
+            this.props.getUserStatus(userId)
+        }
+
+    }
+
+    componentDidMount() {
+        this.refreshProfile()
+    }
+    componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>, snapshot?: any) {
+        if (this.props.id !== prevProps.id) {
+            this.refreshProfile()
+        }
     }
 
     render() {
@@ -57,8 +64,8 @@ class ProfileContainerAPI extends React.Component<ProfilePropsType> {
             return <Navigate to={'/login'}/>
         }
 
-        return <Profile profile={this.props.profile} status={this.props.status}
-                        updateUserStatus={this.props.updateUserStatus}/>
+        return <Profile isOwner={!this.props.id} profile={this.props.profile} status={this.props.status}
+                        updateUserStatus={this.props.updateUserStatus} savePhoto={this.props.savePhoto}/>
     }
 }
 
@@ -88,7 +95,8 @@ const ProfileContainer = WithAuthRedirect(connect(mapStateToProps,
     {
         setUserInfo,
         getUserStatus,
-        updateUserStatus
+        updateUserStatus,
+        savePhoto
     })(WithRouterHOC(ProfileContainerAPI)))
 
 export default ProfileContainer
