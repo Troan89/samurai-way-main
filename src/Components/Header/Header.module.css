@@ -2,13 +2,36 @@
     grid-area: h;
     background-color: aquamarine;
     border-radius: 10px;
+    padding: 5px;
 }
+
 .header img {
-    width: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 20px;
 }
 
 .loginBlock {
-  float: right;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    float: right;
+
+    button {
+        border-radius: 5px;
+        border: none;
+        transition: background-color 0.3s, color 0.3s;
+        background-color: aquamarine;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    button:active {
+        background-color: #1c638d;
+    }
 }
 
 .loginBlock a {

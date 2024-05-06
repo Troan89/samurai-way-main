@@ -2,6 +2,10 @@ ul li {
     list-style-type: initial;
 }
 
+body {
+    background-color: rgba(128, 128, 128, 0.5); /* Полупрозрачный серый фон */
+}
+
 .app-wrapper {
     width: 1200px;
     margin: 0 auto;
@@ -13,9 +17,11 @@ ul li {
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
     border-radius: 10px;
+
 }
 
 .app-wrapper-content {
+
     grid-area: c;
     background-color: cyan;
     border-radius: 10px;
