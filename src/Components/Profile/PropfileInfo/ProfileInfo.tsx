@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react"
+import React, {ChangeEvent, useRef, useState} from "react"
 import s from "./ProfileInfo.module.css"
 import {UserProfile_T} from "../ProfileContainer"
 import {Preloader} from "../../common/Preloader/Preloader"
@@ -17,7 +17,7 @@ type Props = {
 }
 
 export const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto}: Props) => {
-
+    const inputRef = useRef<HTMLInputElement>(null);
     const [editMode, setEditMode] = useState(false)
 
     if (!profile) { // потом редирект на логин
@@ -38,10 +38,10 @@ export const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePho
                     <img alt={''} className={s.photos} src={profile.photos.large || userImg}/>
                     {isOwner &&
                         <div className={s.uploadButton}>
-                            <button>
+                            <button  onClick={() => inputRef.current?.click()}>
                                 <img src={editPhoto} alt=""/>
                             </button>
-                            <input type='file' onChange={mainPhotoSelected} style={{ display: 'none' }}/>
+                            <input ref={inputRef} type='file' onChange={mainPhotoSelected} style={{ display: 'none' }}/>
                         </div>
                     }
                 </div>
