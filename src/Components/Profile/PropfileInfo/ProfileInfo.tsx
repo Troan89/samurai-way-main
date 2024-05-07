@@ -4,6 +4,7 @@ import {UserProfile_T} from "../ProfileContainer"
 import {Preloader} from "../../common/Preloader/Preloader"
 import {ProfileStatusWithHook} from "Components/Profile/PropfileInfo/ProfileStatusWithHook"
 import userImg from "../../../assets/images/user.jpg"
+import editPhoto from "../../../assets/editPhoto.png"
 import {ProfileBlock} from "./ProfileBlock";
 import {ProfileBlockForm} from "./ProfileBlockForm";
 
@@ -30,16 +31,28 @@ export const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePho
     }
 
 
-
     return (
         <div>
             <div className={s.descriptionBlock}>
-                <img className={s.photos} src={profile.photos.large || userImg}/>
-                {isOwner && <input type='file' onChange={mainPhotoSelected}/>}
+                <div  className={s.imageContainer}>
+                    <img alt={''} className={s.photos} src={profile.photos.large || userImg}/>
+                    {isOwner &&
+                        <div className={s.uploadButton}>
+                            <button>
+                                <img src={editPhoto} alt=""/>
+                            </button>
+                            <input type='file' onChange={mainPhotoSelected} style={{ display: 'none' }}/>
+                        </div>
+                    }
+                </div>
 
                 {editMode
-                    ? <ProfileBlockForm profile={profile} goToEditMode={()=>{setEditMode(false)}}/>
-                    : <ProfileBlock profile={profile} isOwner={isOwner} goToEditMode={()=>{setEditMode(true)}} />
+                    ? <ProfileBlockForm profile={profile} goToEditMode={() => {
+                        setEditMode(false)
+                    }}/>
+                    : <ProfileBlock profile={profile} isOwner={isOwner} goToEditMode={() => {
+                        setEditMode(true)
+                    }}/>
                 }
                 <ProfileStatusWithHook status={status} updateUserStatus={updateUserStatus}/>
 

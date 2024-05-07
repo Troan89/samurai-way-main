@@ -1,10 +1,27 @@
 .descriptionBlock {
     padding: 10px;
+
+}
+
+.imageContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.uploadButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .photos {
     max-width: 200px;
     max-height: 200px;
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
 }
 
 .contact {
