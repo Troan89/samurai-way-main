@@ -2,6 +2,7 @@ import React from "react"
 import { ProfileInfo } from "./PropfileInfo/ProfileInfo"
 import { MyPostContainer } from "./Myposts/MyPostsContainer"
 import { UserProfile_T } from "./ProfileContainer"
+import s from './Profile.module.css'
 
 type ProfilePropsType = {
     profile: UserProfile_T | null
@@ -14,7 +15,7 @@ type ProfilePropsType = {
 export const Profile = ({profile, status, updateUserStatus, isOwner, savePhoto}:ProfilePropsType) => {
 
     return (
-        <div>
+        <div className={s.wrapperBlockProfile}>
             <ProfileInfo savePhoto={savePhoto} isOwner={isOwner} profile={profile} status={status} updateUserStatus={updateUserStatus}/>
             <MyPostContainer />
         </div>

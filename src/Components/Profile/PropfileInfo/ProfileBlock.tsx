@@ -1,6 +1,7 @@
 import {UserProfile_T} from "../ProfileContainer";
 import React from "react";
 import {Contact} from "./Contact";
+import s from './ProfileBlock.module.css'
 
 type Props = {
     profile: UserProfile_T
@@ -10,7 +11,7 @@ type Props = {
 export const ProfileBlock = ({profile, isOwner, goToEditMode}: Props) => {
     return <div>
         {isOwner && <div>
-            <button onClick={goToEditMode}>edit</button>
+            <button onClick={goToEditMode} className={s.editButton}>Редактировать информацию о себе *</button>
         </div>
         }
         <div>
