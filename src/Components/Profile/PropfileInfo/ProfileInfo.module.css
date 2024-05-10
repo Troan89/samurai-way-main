@@ -1,11 +1,29 @@
 .descriptionBlock {
     padding: 10px;
-
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 650px;
 }
 
 .imageContainer {
     position: relative;
     display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    flex: 0 1 auto;
+    align-self: flex-end;
+}
+
+.imageContainer:nth-child(1) {
+    align-self: center;
+}
+.imageContainer:nth-child(2) {
+    align-self: flex-start;
+}
+.imageContainer:nth-child(3) {
+    align-self: flex-start;
 }
 
 .uploadButton {
