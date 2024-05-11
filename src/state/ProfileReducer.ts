@@ -1,9 +1,9 @@
 import {ActionType, ProfilePageType} from "./State"
-import {UserPhotos_T, UserProfile_T} from "../Components/Profile/ProfileContainer"
+import {UserProfile_T} from "../Components/Profile/ProfileContainer"
 import {Dispatch} from "redux"
 import {ProfileApi} from "../api/profile-api"
 import {usersApi} from "../api/users-api"
-import {AppRootStateType, AppThunk, AppThunkDispatch} from "./redux-store";
+import {AppThunkDispatch} from "./redux-store";
 
 let ADD_POST = "PROFILE/ADD-POST" as const
 let DELETE_POST = "PROFILE/DELETE_POST" as const
@@ -11,6 +11,8 @@ let SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE" as const
 let SET_PROFILE = "PROFILE/SET_PROFILE" as const
 let SET_STATUS = "PROFILE/SET_STATUS" as const
 let SET_PHOTO = "PROFILE/SET_PHOTO" as const
+let INCREMENT_LIKE = "PROFILE/INCREMENT_LIKE" as const
+let DECREMENT_LIKE = "PROFILE/DECREMENT_LIKE" as const
 
 const initialState: ProfilePageType = {
     postsData: [
@@ -34,6 +36,12 @@ export const ProfileReducer = (state = initialState, action: ActionType): Profil
             return {...state, status: action.status}
         case SET_PHOTO:
             return {...state, profile: {...state.profile, ...action.userProfile}}
+        case INCREMENT_LIKE:
+             return {
+                ...state, postsData: state.postsData.map((post) =>
+                    post.id === action.postId ? {...post, like: post.like + 1 } : post
+                )
+            }
         default:
             return state
     }
@@ -45,6 +53,7 @@ export const deletePost = (postId: string) => ({type: DELETE_POST, postId}) as c
 export const setUserProfile = (userProfile: UserProfile_T) => ({type: SET_USER_PROFILE, userProfile}) as const
 export const setUserStatus = (status: string) => ({type: SET_STATUS, status}) as const
 export const setPhoto = (userProfile: UserProfile_T) => ({type: SET_PHOTO, userProfile}) as const
+export const incrementLike = (postId: string) => ({type: INCREMENT_LIKE, postId}) as const
 
 //thunk
 export const setUserInfo = (userId: string) => async (dispatch: Dispatch) => {

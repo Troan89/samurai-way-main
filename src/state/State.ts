@@ -1,4 +1,4 @@
-import {addPost, deletePost, setPhoto, setUserProfile, setUserStatus} from "./ProfileReducer";
+import {addPost, deletePost, incrementLike, setPhoto, setUserProfile, setUserStatus} from "./ProfileReducer";
 import {addMessage} from "./DialogsReducer";
 import {
     follow,
@@ -146,6 +146,7 @@ export type ActionType =
     | DeletePostType
 | SetPhotoType
 | GetCaptchaUrlType
+| IncrementLike
 
 export type AddPostType = ReturnType<typeof addPost>
 export type AddMessageType = ReturnType<typeof addMessage>
@@ -163,6 +164,7 @@ export type setInitializedType = ReturnType<typeof setInitialized>
 export type DeletePostType = ReturnType<typeof deletePost>
 export type SetPhotoType = ReturnType<typeof setPhoto>
 export type GetCaptchaUrlType = ReturnType<typeof getCaptchaUrl>
+export type IncrementLike = ReturnType<typeof incrementLike>
 
 
 
