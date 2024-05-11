@@ -42,6 +42,12 @@ export const ProfileReducer = (state = initialState, action: ActionType): Profil
                     post.id === action.postId ? {...post, like: post.like + 1 } : post
                 )
             }
+        case DECREMENT_LIKE:
+            return {
+                ...state, postsData: state.postsData.map((post) =>
+                    post.id === action.postId ? {...post, like: post.like - 1 } : post
+                )
+            }
         default:
             return state
     }
@@ -54,6 +60,7 @@ export const setUserProfile = (userProfile: UserProfile_T) => ({type: SET_USER_P
 export const setUserStatus = (status: string) => ({type: SET_STATUS, status}) as const
 export const setPhoto = (userProfile: UserProfile_T) => ({type: SET_PHOTO, userProfile}) as const
 export const incrementLike = (postId: string) => ({type: INCREMENT_LIKE, postId}) as const
+export const decrementLike = (postId: string) => ({type: DECREMENT_LIKE, postId}) as const
 
 //thunk
 export const setUserInfo = (userId: string) => async (dispatch: Dispatch) => {
