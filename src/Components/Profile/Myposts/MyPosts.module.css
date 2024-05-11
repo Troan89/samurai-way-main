@@ -6,3 +6,19 @@
     margin-top: 10px;
 
 }
+
+.buttonAddPost {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    padding: 10px 20px; /* Внутренние отступы */
+    font-size: 16px; /* Размер шрифта */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.2); /* Тень */
+    cursor: pointer; /* Изменение курсора при наведении */
+    transition: all 0.3s ease; /* Плавное изменение свойств */
+    border-color: grey;
+}
+
+.buttonAddPost:hover {
+    background-color: #45a049; /* Изменение цвета при наведении */
+}

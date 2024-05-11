@@ -3,6 +3,7 @@ import {TextField} from "@mui/material";
 import {useFormik} from "formik";
 import {addPost} from "../../../state/ProfileReducer";
 import {useAppDispatch} from "../../../state/redux-store";
+import s from '../Myposts/MyPosts.module.css'
 
 type Errors_T = {
     post?: string,
@@ -42,7 +43,7 @@ export const FormPost = () => {
                 <div style={{color: 'red'}}>{formik.errors.post}</div>}
         </div>
         <div>
-            <button type="submit" >Добавить пост</button>
+            <button type="submit" className={s.buttonAddPost} >Добавить пост</button>
         </div>
     </form>
 };
