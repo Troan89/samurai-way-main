@@ -4,6 +4,7 @@ import {useFormik} from "formik";
 import {addPost} from "../../../state/ProfileReducer";
 import {useAppDispatch} from "../../../state/redux-store";
 import s from '../Myposts/MyPosts.module.css'
+import styled from "styled-components";
 
 type Errors_T = {
     post?: string,
@@ -33,18 +34,27 @@ export const FormPost = () => {
     })
 
     return <form onSubmit={formik.handleSubmit}>
-        <div>
+        <TextFieldDiv>
             <TextField
                 margin="normal"
+                fullWidth
+                multiline
                 error={formik.touched.post && !!formik.errors.post}
                 {...formik.getFieldProps('post')}
             />
             {formik.touched.post && formik.errors.post &&
                 <div style={{color: 'red'}}>{formik.errors.post}</div>}
-        </div>
+        </TextFieldDiv>
         <div>
             <button type="submit" className={s.buttonAddPost} >Добавить пост</button>
         </div>
     </form>
 };
 
+const TextFieldDiv = styled.div`
+    width: 100%;
+    min-height: 100px;
+    input {
+        width: 100%;
+    }
+`
