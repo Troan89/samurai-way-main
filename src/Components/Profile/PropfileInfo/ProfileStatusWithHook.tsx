@@ -1,5 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useState } from "react"
-import { ProfilePropsType } from "../ProfileContainer"
+import React, { ChangeEvent, useEffect, useState } from "react"
 
 type ProfileStatus_T = {
   status: string
@@ -29,7 +28,7 @@ export const ProfileStatusWithHook = (props: ProfileStatus_T) => {
     <div>
       {!editMode && (
         <div>
-          <b>Статус:</b><span onDoubleClick={activateEditMode}>{ status || "----"}</span>
+          <b>Статус: </b><span onDoubleClick={activateEditMode}>{ status || "----"}</span>
         </div>
       )}
       {editMode && (
