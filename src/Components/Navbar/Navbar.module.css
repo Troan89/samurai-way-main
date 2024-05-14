@@ -1,6 +1,6 @@
 .nav {
     grid-area: n;
-    background-color: bisque;
+    background-image: url("../../assets/background/navbarContentBackground.jpg");
     border-radius: 10px;
 }
 

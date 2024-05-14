@@ -1,4 +1,6 @@
 .wrapperBlockProfile {
+    background-image: url("../../assets/background/navbarContentBackground.jpg");
+    border-radius: 10px;
     /*display: flex;*/
     /*flex-direction: column;*/
     /*align-items: flex-start;*/

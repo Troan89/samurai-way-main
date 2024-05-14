@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const NavWrapper = styled.div`
-  margin-left: 10px;
+  margin: 0 10px;
   font-size: 20px;
 
   & > a {
@@ -11,7 +11,8 @@ const NavWrapper = styled.div`
 
   & > a.active {
     text-decoration: none;
-    color: #03eaff;
+    color: black;
+      font-weight: 600;
   }
 
   & > a:hover {
