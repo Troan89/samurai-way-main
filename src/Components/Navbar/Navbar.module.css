@@ -1,7 +1,6 @@
 .nav {
     grid-area: n;
     background-image: url("../../assets/background/navbarContentBackground.jpg");
-    border-radius: 10px;
 }
 
 .item a{

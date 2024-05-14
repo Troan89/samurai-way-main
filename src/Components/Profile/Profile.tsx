@@ -16,7 +16,9 @@ export const Profile = ({profile, status, updateUserStatus, isOwner, savePhoto}:
 
     return (
         <div className={s.wrapperBlockProfile}>
-            <ProfileInfo savePhoto={savePhoto} isOwner={isOwner} profile={profile} status={status} updateUserStatus={updateUserStatus}/>
+            <div className={s.profileInfoContainer}>
+                <ProfileInfo savePhoto={savePhoto} isOwner={isOwner} profile={profile} status={status} updateUserStatus={updateUserStatus}/>
+            </div>
             <MyPostContainer />
         </div>
     )

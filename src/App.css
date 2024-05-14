@@ -4,7 +4,7 @@ ul li {
 
 body {
     /*background-image: linear-gradient(45deg, #efefef 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, #efefef 75%, #efefef);*/
-    background-color: #f2f2f2; /* Сероватый оттенок фона */
+    background-color: #333131; /* Сероватый оттенок фона */
     /*background-image: linear-gradient(to bottom, #f2f2f2, #dcdcdc); !* Градиентный фон для эффекта глубины *!*/
     background-repeat: no-repeat; /* Отключение повторения фонового изображения */
     /*background-image: url("./assets/background/background.jpg");;*/
@@ -13,7 +13,7 @@ body {
 }
 
 .app-wrapper {
-    max-width: 800px;
+    max-width: 60%;
     margin: 0 auto;
     display: grid;
     grid-template-areas:
@@ -22,15 +22,13 @@ body {
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
-    border-radius: 10px;
 
 }
 
 .app-wrapper-content {
 
     grid-area: c;
-    background-color: cyan;
-    border-radius: 10px;
+    /*background-color: cyan;*/
 }
 
 

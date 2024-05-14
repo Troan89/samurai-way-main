@@ -32,7 +32,6 @@ export const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePho
 
 
     return (
-        <div>
             <div className={s.descriptionBlock}>
                 <div  className={s.imageContainer}>
                     <img alt={''} className={s.photos} src={profile.photos.large || userImg}/>
@@ -46,19 +45,19 @@ export const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePho
                     }
                 </div>
 
-                {editMode
-                    ? <ProfileBlockForm profile={profile} goToEditMode={() => {
-                        setEditMode(false)
-                    }}/>
-                    : <ProfileBlock profile={profile} isOwner={isOwner} goToEditMode={() => {
-                        setEditMode(true)
-                    }}/>
-                }
-                <ProfileStatusWithHook status={status} updateUserStatus={updateUserStatus}/>
+                <div>
+                    {editMode
+                        ? <ProfileBlockForm profile={profile} goToEditMode={() => {
+                            setEditMode(false)
+                        }}/>
+                        : <ProfileBlock profile={profile} isOwner={isOwner} goToEditMode={() => {
+                            setEditMode(true)
+                        }}/>
+                    }
+                    <ProfileStatusWithHook status={status} updateUserStatus={updateUserStatus}/>
+                </div>
 
             </div>
-        </div>
-
 
     )
 }

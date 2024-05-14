@@ -1,7 +1,6 @@
 .header {
     grid-area: h;
     background-image: url("../../assets/background/navbarContentBackground.jpg");
-    border-radius: 10px;
     padding: 5px;
 }
 
