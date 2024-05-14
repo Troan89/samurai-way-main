@@ -1,7 +1,7 @@
 .item {
     display: flex;
     flex-direction: column;
-    color: black;
+    /*color: black;*/
     margin: 10px 0;
     box-shadow: -2px 5px 10px rgba(128, 128, 128, 0.5);
     border-radius: 10px;

@@ -37,8 +37,10 @@ export const FormPost = () => {
         <TextFieldDiv>
             <TextField
                 margin="normal"
+
                 fullWidth
                 multiline
+                style={{backgroundColor:"#404040", borderRadius:"8px", minHeight:"50px"}}
                 error={formik.touched.post && !!formik.errors.post}
                 {...formik.getFieldProps('post')}
             />
@@ -54,7 +56,4 @@ export const FormPost = () => {
 const TextFieldDiv = styled.div`
     width: 100%;
     min-height: 100px;
-    input {
-        width: 100%;
-    }
 `

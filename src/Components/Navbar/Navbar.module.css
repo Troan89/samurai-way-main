@@ -1,6 +1,8 @@
 .nav {
     grid-area: n;
-    background-image: url("../../assets/background/navbarContentBackground.jpg");
+    /*background-image: url("../../assets/background/navbarContentBackground.jpg");*/
+    background-color: black;
+    padding-top: 10px;
 }
 
 .item a{
@@ -10,5 +12,5 @@
 
 .item a:active,
 .item a:focus {
-    color: green;
+    color: white;
 }

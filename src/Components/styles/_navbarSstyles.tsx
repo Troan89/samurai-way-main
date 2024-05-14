@@ -1,23 +1,28 @@
 import styled from "styled-components";
 
 const NavWrapper = styled.div`
-  margin: 0 10px;
-  font-size: 20px;
+    font-size: 20px;
+    padding: 7px;
+    border-radius: 5px;
 
-  & > a {
-    text-decoration: none;
-    color: #1e3786;
-  }
+    & > a {
+        text-decoration: none;
+        color: white;
+    }
 
-  & > a.active {
-    text-decoration: none;
-    color: black;
-      font-weight: 600;
-  }
+    & > a.active {
+        text-decoration: none;
+        color: #C0C0C0;
+        font-weight: 600;
+    }
 
-  & > a:hover {
-    color: steelblue; /* Цвет ссылки */
-  }
+    & > a:hover {
+        background-color: #202020; /* Цвет ссылки */
+    }
+
+    &:hover {
+        background-color: #202020; /* Цвет фона при ховере */
+    }
 `
 
 

@@ -1,21 +1,23 @@
 .header {
     grid-area: h;
-    background-image: url("../../assets/background/navbarContentBackground.jpg");
+    /*background-image: url("../../assets/background/navbarContentBackground.jpg");*/
+    background-color: #202020;
     padding: 5px;
 }
 
 .header img {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin-left: 20px;
 }
 
 .loginBlock {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
     float: right;
+    gap: 10px;
 
     button {
         background-color: darkgrey;

@@ -1,9 +1,9 @@
 .wrapperBlockProfile {
-    background-image: url("../../assets/background/navbarContentBackground.jpg");
-
+    /*background-image: url("../../assets/background/navbarContentBackground.jpg");*/
+    background-color: #202020; /* Цвет фона при ховере */
 }
 
 .profileInfoContainer {
-    padding-bottom: 5px;
-    background-color: #333131;
+    padding-bottom: 10px;
+    background-color: black;
 }

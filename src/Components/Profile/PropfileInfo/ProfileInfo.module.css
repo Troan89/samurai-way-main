@@ -4,11 +4,12 @@
     justify-content: space-around;
     border: 1px black solid;
     /*margin-bottom: 30px;*/
-    background-image: url("../../../assets/background/navbarContentBackground.jpg");
+    /*background-image: url("../../../assets/background/navbarContentBackground.jpg");*/
     /*flex-flow: column nowrap;*/
     /*align-items: flex-start;*/
     /*align-content: flex-start;*/
     /*width: 650px;*/
+    background-color: #202020;
 }
 
 .imageContainer {
