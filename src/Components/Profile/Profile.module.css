@@ -1,6 +1,7 @@
 .wrapperBlockProfile {
     /*background-image: url("../../assets/background/navbarContentBackground.jpg");*/
     background-color: #202020; /* Цвет фона при ховере */
+    margin-top: -3px;
 }
 
 .profileInfoContainer {

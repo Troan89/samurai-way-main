@@ -13,10 +13,17 @@ export const MyPost = (props: MePostPropsType) => {
     let postsElement = props.posts.map((post, index) => <Post key={index} id={post.id} message={post.message} like={post.like}/>)
     return (
         <div className={s.postsBlock}>
-            Мои посты
-            <FormPost />
-            <div className={s.posts}>
-                {postsElement}
+            <div className={s.blockPosts}>
+                <div className={s.text}>
+                    Мои посты
+                    <FormPost />
+                    <div className={s.posts}>
+                        {postsElement}
+                    </div>
+                </div>
+            </div>
+            <div className={s.blockFriends}>
+
             </div>
         </div>
     )

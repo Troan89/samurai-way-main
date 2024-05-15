@@ -1,6 +1,19 @@
 .postsBlock {
-    padding: 10px;
-    border: 1px solid black;
+    display: flex;
+
+    .text {
+        padding: 10px;
+    }
+}
+
+.blockPosts {
+    flex: 65%;
+    padding-right: 10px;
+    border-right: 10px solid black;
+}
+
+.blockFriends {
+    flex: 35%;
 }
 
 .posts {
