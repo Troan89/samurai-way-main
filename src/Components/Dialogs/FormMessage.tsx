@@ -2,7 +2,7 @@ import React from 'react';
 import {TextField} from "@mui/material";
 import {useFormik} from "formik";
 import {useAppDispatch} from "../../state/redux-store";
-import s from "./Dialogs.module.css";
+import s from "./Dialogs.module.scss";
 import {addMessage} from "../../state/DialogsReducer";
 
 type Errors_T = {

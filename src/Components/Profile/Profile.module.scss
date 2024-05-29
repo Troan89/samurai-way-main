@@ -1,0 +1,11 @@
+@import 'src/styles/_colors';
+
+.wrapperBlockProfile {
+    background-color: $color-dark-700;
+    margin-top: -3px;
+}
+
+.profileInfoContainer {
+    padding-bottom: 10px;
+    background-color: $color-dark-1000;
+}
