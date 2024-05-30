@@ -37,6 +37,9 @@ export const FormMessage = () => {
         <div>
             <TextField
                 margin="normal"
+                multiline
+                fullWidth
+                style={{backgroundColor:"#404040", borderRadius:"8px", minHeight:"50px"}}
                 error={formik.touched.message && !!formik.errors.message}
                 {...formik.getFieldProps('message')}
             />
@@ -44,7 +47,7 @@ export const FormMessage = () => {
                 <div style={{color: 'red'}}>{formik.errors.message}</div>}
         </div>
         <div>
-            <button type={'submit'} >Добавить сообщение</button>
+            <button type={'submit'} className={s.buttonMessage}>Добавить сообщение</button>
         </div>
     </form>
 };

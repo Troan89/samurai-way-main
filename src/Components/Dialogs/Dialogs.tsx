@@ -28,7 +28,9 @@ export const Dialogs = (props: DialogsPropsType) => {
                 {dialogsElements}
             </div>
             <div>{messagesElements}</div>
-            <FormMessage />
+            <div className={s.FormMessage}>
+                <FormMessage/>
+            </div>
         </div>
     )
 }

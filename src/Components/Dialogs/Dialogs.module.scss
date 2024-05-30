@@ -19,3 +19,22 @@
 .messages .message {
     color: white;
 }
+
+.FormMessage {
+    margin-top: 10px;
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.buttonMessage {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    padding: 10px 10px; /* Внутренние отступы */
+    font-size: 16px; /* Размер шрифта */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.2); /* Тень */
+    cursor: pointer; /* Изменение курсора при наведении */
+    transition: all 0.3s ease; /* Плавное изменение свойств */
+    border-color: grey;
+    width: 200px;
+}
