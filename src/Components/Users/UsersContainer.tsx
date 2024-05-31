@@ -14,6 +14,7 @@ import {
   getUsersSelector,
 } from "selectors/usersSelectors"
 import { Users } from "Components/Users/Users"
+import s from './Users.module.scss'
 
 type UsersPropsType = {
   users: Array<UsersType>
@@ -43,7 +44,7 @@ export class UsersContainerAPI extends React.Component<UsersPropsType, any> {
 
   render() {
     return (
-      <>
+      <div className={s.wrapper}>
         {this.props.isFetching ? <Preloader /> : null}
         <Users
           totalUserCount={this.props.totalUserCount}
@@ -55,7 +56,7 @@ export class UsersContainerAPI extends React.Component<UsersPropsType, any> {
           unfollowUser={this.props.unfollowUser}
           followUser={this.props.followUser}
         />
-      </>
+      </div>
     )
   }
 }

@@ -1,0 +1,28 @@
+.paginator {
+    /*margin: 15px;*/
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.pageNUmber {
+    padding: 2px;
+    border: 1px solid black;
+}
+
+.buttonPagination {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    padding: 3px 3px; /* Внутренние отступы */
+    font-size: 14px; /* Размер шрифта */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.2); /* Тень */
+    cursor: pointer; /* Изменение курсора при наведении */
+    transition: all 0.3s ease; /* Плавное изменение свойств */
+    border-color: grey;
+    width: 50px;
+}
+
+.pageNumber.selectedPage {
+    font-weight: bold;
+    color: darkgrey;
+}

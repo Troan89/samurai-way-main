@@ -1,4 +1,4 @@
-import styles from "./Users.module.css"
+import styles from "./Users.module.scss"
 import userImg from "../../assets/images/user.jpg"
 import React from "react"
 import {UsersType} from "../../state/State"
@@ -19,7 +19,7 @@ export const User = (props: User_T) => {
       <span>
         <div>
           <NavLink to={`/profile/${user.id}`}>
-            <img
+            <img alt={''}
               src={user.photos.small != null ? user.photos.small : userImg}
               className={styles.usersPhoto}
               // onClick={()=>props.setUserInfo(user.id)}

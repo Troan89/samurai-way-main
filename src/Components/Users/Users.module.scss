@@ -1,0 +1,13 @@
+@import "src/styles/_colors.scss";
+.wrapper {
+    background-color: $color-dark-700;
+    margin-top: -3px;
+}
+.pagination {
+    margin-top: 50px;
+}
+.usersPhoto {
+    width: 100px;
+    height: 100px;
+}
+
