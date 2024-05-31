@@ -11,3 +11,14 @@
     height: 100px;
 }
 
+.users {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.user {
+    width: 150px;
+}

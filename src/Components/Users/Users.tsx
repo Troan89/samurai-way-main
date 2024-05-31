@@ -2,7 +2,7 @@ import React from "react"
 import {UsersType} from "../../state/State"
 import {Paginator} from "../common/paginator/Paginator"
 import {User} from "./User"
-
+import s from './Users.module.scss'
 
 type Users_T = {
     users: Array<UsersType>
@@ -28,7 +28,7 @@ export const Users = (props: Users_T) => {
                 onPageChanged={onPageChanged}
                 portionSize={10}
             />
-            <div>
+            <div className={s.users}>
                 {users.map((user) => (
                     <User
                         user={user}

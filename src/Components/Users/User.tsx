@@ -3,6 +3,7 @@ import userImg from "../../assets/images/user.jpg"
 import React from "react"
 import {UsersType} from "../../state/State"
 import {NavLink} from "react-router-dom"
+import s from './Users.module.scss'
 
 type User_T = {
   user: UsersType
@@ -15,7 +16,7 @@ export const User = (props: User_T) => {
   const { user, unfollowUser, followUser, followingInProgress } = props
 
   return (
-    <div>
+    <div className={s.user}>
       <span>
         <div>
           <NavLink to={`/profile/${user.id}`}>
@@ -52,10 +53,6 @@ export const User = (props: User_T) => {
         <span>
           <div> {user.name} </div>
           <div> {user.status} </div>
-        </span>
-        <span>
-          <div>{"user.location.country"}</div>
-          <div>{"user.location.city"}</div>
         </span>
       </span>
     </div>
